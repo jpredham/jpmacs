@@ -7,19 +7,14 @@
 
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "M-g g") 'goto-line)
-(global-set-key (kbd "C-v") 'pager-page-down)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "M-v") 'pager-page-up)
-(global-set-key (kbd "M-Q") 'lob/unfill-paragraph)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
 (global-set-key (kbd "M-.") 'find-tag)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "C-x \\") 'align-regexp)
-(global-set-key (kbd "C-x f") 'lob/recentf-ido-find-file)
-(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x t") 'transpose-lines)
 (global-set-key (kbd "C-x C-t") 'other-window)
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
@@ -27,12 +22,12 @@
 (global-set-key (kbd "C-x C-p") 'previous-error)
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 (global-set-key (kbd "C-c C-m") 'execute-extended-command)
+(global-set-key (kbd "C-x b") 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 (global-set-key (kbd "C-x M-m") 'shell)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
-(global-set-key (kbd "C-c n") 'lob/cleanup-buffer)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
@@ -63,6 +58,14 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tooltip-mode) (tooltip-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-max-prospects 10)
 
 (auto-fill-mode 1)
 (setq comment-auto-fill-only-comments t)
