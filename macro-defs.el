@@ -1,12 +1,12 @@
-;;; jp-defuns.el
+;;; macro-defs.el
 
-(defun jp/run-coding-hook ()
+(defun macro/run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
-  (run-hooks 'jp/coding-hook))
+  (run-hooks 'macro/coding-hook))
 
 
 ;; prettify lambda keyword
-(defun jp/pretty-lambdas ()
+(defun macro/pretty-lambdas ()
   (font-lock-add-keywords
    nil `(("(?\\(lambda\\>\\)"
           (0 (progn (compose-region (match-beginning 1) (match-end 1)
@@ -14,7 +14,7 @@
                     nil))))))
 
 
-(defun jp/highlight_longlines ()
+(defun macro/highlight_longlines ()
   (font-lock-add-keywords 
      nil
      '(("^[^\n]\\{80\\}\\(.*\\)$"
@@ -22,9 +22,9 @@
 
 
 ;; kill the characters from the cursor to the beginning of the line
-(defun jp/backward-kill-line ()
+(defun macro/backward-kill-line ()
   "Kill chars backward until encountering the end of a line."
   (interactive)
   (kill-line 0))
 
-(provide 'jp-defuns)
+(provide 'macro-defs)

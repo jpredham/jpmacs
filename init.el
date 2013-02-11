@@ -1,8 +1,8 @@
 ;;; init.el
 
 ;;; Emacs Load Path
-(load "~/.emacs.d/jp-defuns")
-(load "~/.emacs.d/jp-python")
+(load "~/.emacs.d/macro-defs")
+(load "~/.emacs.d/python-defs")
 (load "~/.emacs.d/jinja2-mode")
 
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
@@ -38,7 +38,7 @@
 (global-set-key (kbd "C-x C-l") 'replace-regexp)
 (global-set-key (kbd "C-x C-r") 'replace-string)
 (global-set-key (kbd "C-x C-l") 'replace-regexp)
-(global-set-key (kbd "C-u") 'jp/backward-kill-line)
+(global-set-key (kbd "C-u") 'macro/backward-kill-line)
 
 
 (prefer-coding-system 'utf-8)
@@ -54,6 +54,7 @@
 (setq-default truncate-lines t)
 (setq-default save-place t)
 (setq-default css-indent-offset 2)
+(setq column-number-mode t)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tooltip-mode) (tooltip-mode -1))
@@ -87,8 +88,8 @@
 (global-linum-mode 1)
 
 
-(add-hook 'jp/coding-hook 'jp/pretty-lambdas)
-(add-hook 'jp/coding-hook 'jp/highlight_longlines)
+(add-hook 'macro/coding-hook 'macro/pretty-lambdas)
+(add-hook 'macro/coding-hook 'macro/highlight_longlines)
 
 (require 'saveplace)
 (require 'ffap)
