@@ -55,6 +55,7 @@
 (setq-default save-place t)
 (setq-default css-indent-offset 2)
 (setq column-number-mode t)
+
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tooltip-mode) (tooltip-mode -1))
