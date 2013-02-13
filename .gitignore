@@ -1,5 +1,6 @@
 auto-save-list
 places
+elpa
 *.elc
 \#*
 loaddefs.el*
