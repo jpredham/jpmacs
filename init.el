@@ -51,7 +51,6 @@
 ;; Emacs config
 (require 'saveplace)
 (require 'ffap)
-(require 'uniquify)
 (require 'ansi-color)
 (prefer-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -94,6 +93,12 @@
 (require 'macro-defs)
 (require 'python-defs)
 (add-hook 'macro/coding-hook 'macro/highlight_longlines)
+
+;;Uniquify
+(require 'uniquify)
+(setq 
+  uniquify-buffer-name-style 'post-forward
+  uniquify-separator " : ")
 
 ;;Autopair
 (require 'autopair)
