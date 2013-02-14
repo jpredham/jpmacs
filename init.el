@@ -4,10 +4,9 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                            ("marmalade" . "http://marmalade-repo.org/packages/")
                            ("melpa" . "http://melpa.milkbox.net/packages/")))
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (package-initialize)
-
 
 ;; Core Packages
 (when (not package-archive-contents)
@@ -104,6 +103,9 @@
 (require 'uniquify)
 (require 'ansi-color)
 
+;; Custom Libraries
+(require 'macro-defs)
+(require 'python-defs)
 
 ;;Haskell Section:
 (require 'haskell-mode)
