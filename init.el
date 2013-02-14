@@ -12,7 +12,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode)
+(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode)
   "Ensure these packages are installed at launch.")
 
 (dolist (p core-packages)
@@ -93,7 +93,6 @@
 ;; Custom Libraries
 (require 'macro-defs)
 (require 'python-defs)
-(add-hook 'macro/coding-hook 'macro/pretty-lambdas)
 (add-hook 'macro/coding-hook 'macro/highlight_longlines)
 
 ;;Autopair
@@ -124,6 +123,10 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+
+;;Pretty-mode:
+(require 'pretty-mode)
+(global-pretty-mode 1)
 
 ;; Jinja
 (require 'jinja2-mode)
