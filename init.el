@@ -12,7 +12,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar core-packages '(org haskell-mode autopair python-mode pymacs)
+(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode)
   "Ensure these packages are installed at launch.")
 
 (dolist (p core-packages)
