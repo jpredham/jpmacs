@@ -12,7 +12,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode)
+(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode auto-complete)
   "Ensure these packages are installed at launch.")
 
 (dolist (p core-packages)
@@ -99,6 +99,10 @@
 (require 'autopair)
 (autoload 'autopair-global-mode "autopair" nil t)
 (autopair-global-mode)
+
+;;Auto-complete Section:
+(require 'auto-complete)
+(global-auto-complete-mode)
 
 ;; Python
 (require 'python)
