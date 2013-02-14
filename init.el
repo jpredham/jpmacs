@@ -103,6 +103,7 @@
 
 ;; Python
 (require 'python)
+(require 'pymacs)
 (add-hook 'python-mode-hook
           (lambda ()
             (setq tab-width 2
