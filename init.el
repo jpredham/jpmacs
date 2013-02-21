@@ -128,10 +128,22 @@
 
 ;;Org-mode
 (require 'org)
+(require 'org-exp)
+(require 'ob)
+(require 'ob-tangle)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (R . t)
+   (python . t)
+   (java . t)
+   (haskell . t)
+   (sh . t)
+   (gnuplot . t)))
 
 ;;Pretty-mode:
 (require 'pretty-mode)
