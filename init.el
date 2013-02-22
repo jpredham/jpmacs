@@ -12,7 +12,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode auto-complete)
+(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode auto-complete ess)
   "Ensure these packages are installed at launch.")
 
 (dolist (p core-packages)
@@ -147,12 +147,17 @@
    (sh . t)
    (gnuplot . t)))
 
-;;Pretty-mode:
+;;Pretty-mode
 (require 'pretty-mode)
 (global-pretty-mode 1)
 
 ;; Jinja
 (require 'jinja2-mode)
 (add-to-list 'auto-mode-alist '("\\.j2$" . jinja2-mode))
+
+;; ESS
+(require 'ess-site)
+(setq ess-eval-visibly-p nil) ;otherwise C-c C-r (eval region) takes forever
+(setq ess-ask-for-ess-directory nil) ;otherwise you are prompted each time you start an interactive R session
 
 (add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
