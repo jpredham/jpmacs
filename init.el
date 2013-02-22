@@ -20,6 +20,9 @@
     (package-install p)))
 
 ;; Custom Key Bindings
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-x C-k") 'kill-region)
+(global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "M-g g") 'goto-line)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -46,7 +49,6 @@
 (global-set-key (kbd "C-x C-l") 'replace-regexp)
 (global-set-key (kbd "C-x C-r") 'replace-string)
 (global-set-key (kbd "C-x C-l") 'replace-regexp)
-(global-set-key (kbd "C-u") 'macro/backward-kill-line)
 
 ;; Emacs config
 (require 'saveplace)
