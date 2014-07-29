@@ -12,7 +12,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode auto-complete ess)
+(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode auto-complete ruby-mode haml-mode yaml-mode)
   "Ensure these packages are installed at launch.")
 
 (dolist (p core-packages)
@@ -102,11 +102,6 @@
   uniquify-buffer-name-style 'post-forward
   uniquify-separator " : ")
 
-;;Autopair
-(require 'autopair)
-(autoload 'autopair-global-mode "autopair" nil t)
-(autopair-global-mode)
-
 ;;Auto-complete Section:
 (require 'auto-complete)
 (global-auto-complete-mode)
@@ -156,8 +151,32 @@
 (add-to-list 'auto-mode-alist '("\\.j2$" . jinja2-mode))
 
 ;; ESS
-(require 'ess-site)
-(setq ess-eval-visibly-p nil) ;otherwise C-c C-r (eval region) takes forever
-(setq ess-ask-for-ess-directory nil) ;otherwise you are prompted each time you start an interactive R session
+;(require 'ess-site)
+;(setq ess-eval-visibly-p nil) ;otherwise C-c C-r (eval region) takes forever
+;(setq ess-ask-for-ess-directory nil) ;otherwise you are prompted each time you start an interactive R session
 
 (add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.sass$" . css-mode))
+
+
+;; Ruby + Rails
+(require 'ruby-mode)
+(require 'haml-mode)
+;(require 'scss-mode)
+;(setq scss-compile-at-save nil)
+;(require 'sass-mode)
+
+
+;;Autopair
+(require 'autopair)
+(autoload 'autopair-global-mode "autopair" nil t)
+(autopair-global-mode)
+
+
+;; Javascript
+(setq js-indent-level 2)
+
+
+;; Yaml
+(require 'yaml-mode)
