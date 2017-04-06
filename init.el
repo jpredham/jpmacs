@@ -4,7 +4,7 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                            ("marmalade" . "http://marmalade-repo.org/packages/")
                            ("melpa" . "http://melpa.milkbox.net/packages/")))
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (package-initialize)
 
@@ -125,7 +125,6 @@
 
 ;;Org-mode
 (require 'org)
-(require 'org-exp)
 (require 'ob)
 (require 'ob-tangle)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
