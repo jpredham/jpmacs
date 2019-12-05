@@ -1,9 +1,14 @@
 ;;; init.el
 
+;; Enables basic packaging support
+  (require 'package)
+
 ;; Package System and Load Path
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                           ("marmalade" . "http://marmalade-repo.org/packages/")
-                           ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-archives
+  '(("gnu" . "http://elpa.gnu.org/packages/")
+    ("melpa" . "http://melpa.org/packages/")
+  ))
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (package-initialize)
@@ -12,7 +17,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar core-packages '(org haskell-mode autopair python-mode pymacs jinja2-mode pretty-mode auto-complete ruby-mode haml-mode yaml-mode)
+(defvar core-packages '(org autopair elpy flycheck blacken yaml-mode)
   "Ensure these packages are installed at launch.")
 
 (dolist (p core-packages)
@@ -102,80 +107,34 @@
   uniquify-buffer-name-style 'post-forward
   uniquify-separator " : ")
 
-;;Auto-complete Section:
-(require 'auto-complete)
-(global-auto-complete-mode)
-
 ;; Python
 (require 'python)
-(require 'pymacs)
-(add-hook 'python-mode-hook
-          (lambda ()
-            (setq tab-width 2
-                  tab-always-indent t
-                  indent-tabs-mode  nil
-                  python-indent 2)))
+(elpy-enable)
 
-(setq py-load-pymacs-p nil)
-
-;;Haskell
-(require 'haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-;;Org-mode
-(require 'org)
-(require 'ob)
-(require 'ob-tangle)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (R . t)
-   (python . t)
-   (java . t)
-   (haskell . t)
-   (sh . t)
-   (gnuplot . t)))
-
-;;Pretty-mode
-(require 'pretty-mode)
-(global-pretty-mode 1)
-
-;; Jinja
-(require 'jinja2-mode)
-(add-to-list 'auto-mode-alist '("\\.j2$" . jinja2-mode))
-
-;; ESS
-;(require 'ess-site)
-;(setq ess-eval-visibly-p nil) ;otherwise C-c C-r (eval region) takes forever
-;(setq ess-ask-for-ess-directory nil) ;otherwise you are prompted each time you start an interactive R session
-
-(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.sass$" . css-mode))
-
-
-;; Ruby + Rails
-(require 'ruby-mode)
-(require 'haml-mode)
-;(require 'scss-mode)
-;(setq scss-compile-at-save nil)
-;(require 'sass-mode)
-
+;; Enable Flycheck
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;;Autopair
 (require 'autopair)
 (autoload 'autopair-global-mode "autopair" nil t)
 (autopair-global-mode)
 
-
 ;; Javascript
 (setq js-indent-level 2)
 
-
 ;; Yaml
 (require 'yaml-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (yaml-mode blacken flycheck elpy autopair))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
