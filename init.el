@@ -1,7 +1,14 @@
 ;;; init.el
 
+
+;; my elisp
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(load-library "keys")
+(load-library "funcs")
+
+
 ;; Enables basic packaging support
-  (require 'package)
+(require 'package)
 
 ;; Package System and Load Path
 (setq package-archives
@@ -9,7 +16,6 @@
     ("melpa" . "http://melpa.org/packages/")
   ))
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (package-initialize)
 
@@ -24,36 +30,6 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; Custom Key Bindings
-(global-set-key (kbd "C-w") 'backward-kill-word)
-(global-set-key (kbd "C-x C-k") 'kill-region)
-(global-set-key (kbd "C-c C-k") 'kill-region)
-(global-set-key (kbd "C-x p") 'previous-multiframe-window)
-(global-set-key (kbd "M-g g") 'goto-line)
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-x t") 'transpose-lines)
-(global-set-key (kbd "C-x C-t") 'other-window)
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
-(global-set-key (kbd "C-x C-n") 'next-error)
-(global-set-key (kbd "C-x C-p") 'previous-error)
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
-(global-set-key (kbd "C-c C-m") 'execute-extended-command)
-(global-set-key (kbd "C-x b") 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
-(global-set-key (kbd "C-x M-m") 'shell)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
-(global-set-key (kbd "C-c y") 'bury-buffer)
-(global-set-key (kbd "C-c r") 'revert-buffer)
-(global-set-key (kbd "C-x C-r") 'replace-string)
-(global-set-key (kbd "C-x C-l") 'replace-regexp)
-(global-set-key (kbd "C-x C-r") 'replace-string)
-(global-set-key (kbd "C-x C-l") 'replace-regexp)
 
 ;; Emacs config
 (require 'saveplace)
@@ -96,10 +72,6 @@
 (setq column-number-mode t)
 (setq-default save-place t)
 
-;; Custom Libraries
-(require 'macro-defs)
-(require 'python-defs)
-(add-hook 'macro/coding-hook 'macro/highlight_longlines)
 
 ;;Uniquify
 (require 'uniquify)
@@ -131,7 +103,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (yaml-mode blacken flycheck elpy autopair))))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

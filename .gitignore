@@ -1,5 +1,6 @@
 auto-save-list
 places
+elpy
 elpa
 *.elc
 \#*
@@ -7,3 +8,4 @@ loaddefs.el*
 *~
 ac-comphist.dat
 .org-id-locations
+ido.last
